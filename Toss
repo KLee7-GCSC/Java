@@ -1,0 +1,7 @@
+public class Toss {
+
+	public static String getToss() {
+		return Math.random() < .5? "Heads" : "Tails";
+		
+	}//end method getToss
+}// end class Toss
