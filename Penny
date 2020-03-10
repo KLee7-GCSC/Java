@@ -1,0 +1,35 @@
+public class Penny {
+
+	private double value = .01;
+	private String sideUp = Toss.getToss();
+	
+	
+	//getter to return the value of the penny
+	
+
+	public double getValue() {
+		return value;
+	}
+	
+	
+	/** 
+	 * The getValue method returns the value variable in pennyToss.getValue() field
+	 * @return the value in the getValue field
+	 */
+	
+
+	public String getSideUp() {
+		return sideUp;
+	}//end getters
+	
+	/** 
+	 * The getSideUp method returns the sideUp 
+	 * @return the value in the getSideUp field 
+	 */
+	
+	public void toss() {
+		sideUp = Toss.getToss();
+	}
+	
+	
+}// end class penny
