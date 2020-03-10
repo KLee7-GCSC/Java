@@ -1,0 +1,22 @@
+public class Quarter {
+
+	private double value = .25;
+	private String sideUp = Toss.getToss();
+	
+	
+	//getter to return the value of the quarter
+	
+	public double getValue() {
+		return value;
+	}
+	
+	public String getSideUp() {
+		return sideUp;
+	}//end getters
+	
+	public void toss() {
+		sideUp = Toss.getToss();
+	}
+	
+	
+}// end class dime
