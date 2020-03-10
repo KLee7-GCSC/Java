@@ -1,0 +1,100 @@
+//Kim Lee and Nicholas Que
+//This project tosses 4 coins to reach $1.  If the user reaches $1, they win. If they exceed $1, they lose.
+
+
+import java.util.Scanner;
+
+public class TeamBProject2 
+{ //open class CoinTossGame
+	public static void main(String[] args) { //open main method
+		String input; //create input for scanning 
+		System.out.println("Welcome! This program will toss four coins at the same time and adds a balance if they land on heads.");
+		System.out.println("You lose if your balance goes over $1.00, but win if you get exactly $1.00. Good luck!");
+		
+		boolean ReturnLoop = true; //set return loop variable for menus
+		
+		while (ReturnLoop) { //while in the return loop, display menus 
+			System.out.println("");
+			System.out.println("A - Play or Replay the game");
+			System.out.println("B - Quit game");
+			System.out.println("");
+			
+			System.out.println("Please enter an option from above: "); //prompt user to enter an option
+			
+			do { // open do-while: if user input is false, validate user has entered correct letter
+				input = new Scanner (System.in).nextLine();
+				while (!input.equalsIgnoreCase("A") && !input.equalsIgnoreCase("B")) {
+					System.out.println("You have entered an invalid option. Please enter a valid option: ");
+					input = new Scanner (System.in).nextLine();
+				} // close inner while loop
+				
+			} while (false); // end do-while loop when inputs are valid
+			
+			switch (input) { // open switch for case a and case b
+			
+			//Case A - Play or Replay Game
+				case "A":
+				case "a":
+					
+					ReturnLoop = false;
+			
+					double balance = 0.0; //balance accumulator
+					int round = 0; //initialize round number
+					while (balance < 1.00) { //open while loop, while balance is below 1.00
+		
+						round++; //add 1 to round number every iteration
+			
+						System.out.println("");	
+						System.out.println("Toss " + round);
+			
+						//Create a new object		
+						Penny pennyToss = new Penny();		
+						Nickel nickelToss = new Nickel();		
+						Dime dimeToss= new Dime();		
+						Quarter quarterToss = new Quarter();
+				
+						//Toss the new object for a random result (heads or tails)
+						pennyToss.toss();		 
+						nickelToss.toss();		
+						dimeToss.toss();		
+						quarterToss.toss();
+		
+						//adding value to accumulator		
+						balance += pennyToss.getSideUp() == "Heads"? pennyToss.getValue(): 0;		
+						balance += nickelToss.getSideUp() == "Heads"? nickelToss.getValue(): 0;		
+						balance += dimeToss.getSideUp() == "Heads"? dimeToss.getValue(): 0;		
+						balance += quarterToss.getSideUp() == "Heads"? quarterToss.getValue(): 0; 
+		
+						//testing		
+						System.out.println(pennyToss.getSideUp());		
+						System.out.println(nickelToss.getSideUp());		
+						System.out.println(dimeToss.getSideUp());		
+						System.out.println(quarterToss.getSideUp());
+		
+						//System.out.println("Here is your balance: " + balance);	Test to check balance!
+
+						if (balance == 1.00) { // open if statement IF balance is exactly 1.00
+							System.out.println("You've won with an exact balance of $" + balance + ". Congratulations!");
+						} // end if statement
+			
+						else if (balance > 1.00) { // open else if statement IF balance is over 1.00
+							System.out.println("You've lost with a balance of $" + balance + ". Better luck next time!");	
+						} // end else if statement
+			
+					} //end while loop
+					System.out.println("");
+					System.out.println("Returning to menu for options...");
+			
+					ReturnLoop = true;
+					break;
+			
+				//Case B - Quit Game and End Program
+				case "B":
+			    case "b":
+			    	System.out.println("Thank you for playing. Have a nice day!");
+			    	System.exit(0);
+		
+			} // end switch
+		} // end while loop for ReturnLoop
+	}//end main method
+}//end class CoinTossGame
